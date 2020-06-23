@@ -41,7 +41,6 @@ import se.bitcraze.crazyfliecontrol.prefs.PreferencesActivity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
@@ -50,7 +49,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -67,8 +65,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.InputDevice;
@@ -84,8 +82,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.MobileAnarchy.Android.Widgets.Joystick.JoystickView;
+import com.espressif.espdrone.android.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends EspActivity {
 
     private static final String LOG_TAG = "CrazyflieControl";
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 42;
@@ -93,6 +92,7 @@ public class MainActivity extends Activity {
     private JoystickView mJoystickViewLeft;
     private JoystickView mJoystickViewRight;
     private FlightDataView mFlightDataView;
+    private ImageButton mJoystickLeftHLock;
 
     private ScrollView mConsoleScrollView;
     private TextView mConsoleTextView;
@@ -145,6 +145,16 @@ public class MainActivity extends Activity {
         mJoystickViewRight = (JoystickView) findViewById(R.id.joystick_right);
         mJoystickViewRight.setLeft(false);
         mController = new TouchController(mControls, this, mJoystickViewLeft, mJoystickViewRight);
+        mJoystickLeftHLock = findViewById(R.id.joystick_left_hlock);
+        mJoystickLeftHLock.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                boolean targetState = !mJoystickViewLeft.isHorizontalLocked();
+                mJoystickViewLeft.setHorizontalLocked(targetState);
+                mJoystickLeftHLock.setBackgroundResource(targetState ? R.drawable.custom_button :
+                        R.drawable.custom_button_seledted);
+            }
+        });
 
         //initialize gamepad controller
         mGamepadController = new GamepadController(mControls, this, mPreferences);
@@ -293,16 +303,25 @@ public class MainActivity extends Activity {
         // Since Android version 6, ACCESS_COARSE_LOCATION is required for Bluetooth scanning
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Log.e(LOG_TAG, "Android version >= 6 requires ACCESS_COARSE_LOCATION permissions for Bluetooth scanning.");
-            requestPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, MY_PERMISSIONS_REQUEST_LOCATION);
+            requestPermissions(Manifest.permission.ACCESS_FINE_LOCATION, MY_PERMISSIONS_REQUEST_LOCATION);
         } else {
-            connectBle();
+            connect();
         }
+    }
+
+    private void connect() {
+//        connectBle();
+        connectUDP();
     }
 
     private void connectBle() {
         boolean writeWithResponse = mPreferences.getBoolean(PreferencesActivity.KEY_PREF_BLATENCY_BOOL, false);
         Log.d(LOG_TAG, "Using bluetooth write with response - " + writeWithResponse);
         mPresenter.connectBle(writeWithResponse, mCacheDir);
+    }
+
+    private void connectUDP() {
+        mPresenter.connectUDP(mCacheDir);
     }
 
     private void checkLocationSettings() {
@@ -327,7 +346,7 @@ public class MainActivity extends Activity {
             });
             builder.show();
         } else {
-            connectBle();
+            connect();
         }
 
     }

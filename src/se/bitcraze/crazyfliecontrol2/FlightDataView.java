@@ -36,6 +36,8 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.espressif.espdrone.android.R;
+
 /**
  * Compound component that groups together flight data UI elements
  *

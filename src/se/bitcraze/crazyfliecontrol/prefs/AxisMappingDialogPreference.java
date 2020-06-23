@@ -29,7 +29,6 @@ package se.bitcraze.crazyfliecontrol.prefs;
 
 import java.util.List;
 
-import se.bitcraze.crazyfliecontrol2.R;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -48,6 +47,8 @@ import android.view.View.OnGenericMotionListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.espressif.espdrone.android.R;
 
 public class AxisMappingDialogPreference extends DialogPreference implements OnKeyListener, OnGenericMotionListener{
 

@@ -81,6 +81,9 @@ public class JoystickView extends View {
     private int offsetX;
     private int offsetY;
 
+    private boolean verticalLocked = false;
+    private boolean horizontalLocked = false;
+
     // =========================================
     // Constructors
     // =========================================
@@ -339,9 +342,9 @@ public class JoystickView extends View {
 
             // Translate touch position to center of view
             float x = ev.getX(pointerIndex);
-            touchX = x - circleCenterX;
+            touchX = horizontalLocked ? 0 : x - circleCenterX;
             float y = ev.getY(pointerIndex);
-            touchY = y - circleCenterY;
+            touchY = verticalLocked ? 0 : y - circleCenterY;
 
             // Log.d(TAG, String.format("ACTION_MOVE: (%03.0f, %03.0f) => (%03.0f, %03.0f)", x, y, touchX, touchY));
             reportOnMoved();
@@ -456,5 +459,21 @@ public class JoystickView extends View {
 
     public void setLeft(boolean left) {
         isLeft = left;
+    }
+
+    public void setVerticalLocked(boolean locked) {
+        this.verticalLocked = locked;
+    }
+
+    public boolean isVerticalLocked() {
+        return verticalLocked;
+    }
+
+    public void setHorizontalLocked(boolean locked) {
+        this.horizontalLocked = locked;
+    }
+
+    public boolean isHorizontalLocked() {
+        return horizontalLocked;
     }
 }

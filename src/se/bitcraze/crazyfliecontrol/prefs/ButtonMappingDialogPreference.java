@@ -27,7 +27,6 @@
 
 package se.bitcraze.crazyfliecontrol.prefs;
 
-import se.bitcraze.crazyfliecontrol2.R;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -41,6 +40,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.espressif.espdrone.android.R;
 
 public class ButtonMappingDialogPreference extends DialogPreference implements OnKeyListener{
 

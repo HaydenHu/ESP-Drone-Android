@@ -32,11 +32,11 @@ import java.io.IOException;
 import se.bitcraze.crazyflie.lib.crazyradio.ConnectionData;
 import se.bitcraze.crazyflie.lib.crazyradio.Crazyradio;
 import se.bitcraze.crazyfliecontrol.prefs.SelectConnectionDialogFragment.SelectCrazyflieDialogListener;
-import se.bitcraze.crazyfliecontrol2.R;
 import se.bitcraze.crazyfliecontrol2.UsbLinkAndroid;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -53,11 +53,16 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
+
+import androidx.core.app.NavUtils;
+
+import android.preference.PreferenceScreen;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.espressif.espdrone.android.R;
 
 public class PreferencesActivity extends PreferenceActivity {
 
@@ -175,6 +180,28 @@ public class PreferencesActivity extends PreferenceActivity {
             setInitialSummaries();
 
             mDatarateStrings = getResources().getStringArray(R.array.radioDatarateEntries);
+
+            Preference connectionSettings = findPreference("pref_radio_screen");
+            if (connectionSettings != null) {
+                getPreferenceScreen().removePreference(connectionSettings);
+            }
+            Preference bootloader = findPreference("pref_bootload");
+            if (bootloader != null) {
+                getPreferenceScreen().removePreference(bootloader);
+            }
+        }
+
+        @Override
+        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+            if ("pref_origin_project".equals(preference.getKey())) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle(R.string.preferences_origin_project)
+                        .setMessage(R.string.origin_project_content)
+                        .setPositiveButton(android.R.string.ok, null)
+                        .show();
+                return true;
+            }
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
 
         /**

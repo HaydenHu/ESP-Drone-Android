@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.espressif.espdrone.android.R;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
-
-import se.bitcraze.crazyfliecontrol2.R;
 
 /**
  * Created by Da-Jin on 4/18/2015.

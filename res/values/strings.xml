@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Crazyflie Client</string>
-    <string name="title_activity_main">Crazyflie Client</string>
+    <string name="app_name">ESP-Drone</string>
+    <string name="title_activity_main">ESP-Drone</string>
 
     <!-- Header -->
     <string name="battery_text">%1$3d%%</string>
@@ -45,18 +45,18 @@
     <string name="preferences_mode">Mode</string>
     <string name="preferences_mode_defaultValue">2</string>
     <string name="preferences_deadzone">Deadzone</string>
-    <string name="preferences_deadzone_defaultValue">0.1</string>
+    <string name="preferences_deadzone_defaultValue">0.2</string>
     <string name="preferences_rolltrim">Roll trim</string>
     <string name="preferences_pitchtrim">Pitch trim</string>
     <string name="preferences_trim_defaultValue">0.0</string>
     <string name="preferences_advancedflightcontrol">Advanced flight control</string>
     <string name="preferences_afc_title">Advanced flight control preferences</string>
     <string name="preferences_maxRollPitchAngle_title">Max roll/pitch angle</string>
-    <string name="preferences_maxRollPitchAngle_defaultValue">20</string>
+    <string name="preferences_maxRollPitchAngle_defaultValue">15</string>
     <string name="preferences_maxYawAngle_title">Max yaw angle</string>
-    <string name="preferences_maxYawAngle_defaultValue">150</string>
+    <string name="preferences_maxYawAngle_defaultValue">90</string>
     <string name="preferences_maxThrust_title">Max thrust (%)</string>
-    <string name="preferences_maxThrust_defaultValue">80</string>
+    <string name="preferences_maxThrust_defaultValue">90</string>
     <string name="preferences_minThrust_title">Min thrust (%)</string>
     <string name="preferences_minThrust_defaultValue">25</string>
     <string name="preferences_reset_afc_title">Reset values</string>
@@ -81,7 +81,7 @@
     <string name="preferences_touch_thrust_full_travel_summary_on">On the touch controller, use the full travel from bottom to top to control thrust</string>
     <string name="preferences_touch_thrust_full_travel_summary_off">On the touch controller, use the travel from center to top to control thrust</string>
     <string name="preferences_joystick_size_title">Virtual joystick size (%)</string>
-    <string name="preferences_joystick_size_defaultValue">80</string>
+    <string name="preferences_joystick_size_defaultValue">100</string>
     <string name="preferences_btn_title">Gamepad axis and button mapping</string>
     <string name="preferences_category_axes">Axes</string>
     <string name="preferences_right_analog_x_axis_title">Right analog X axis</string>
@@ -139,6 +139,9 @@
     <string name="preferences_show_console_summary">Display console messages from Crazyflie</string>
 
     <string name="preferences_bootloader_title">Bootloader</string>
+
+    <string name="preferences_origin_project">Origin Project</string>
+    <string name="origin_project_content">ESPDrone Android APP based on crazyflie-android-client is licensed under the GNU General Public License V2</string>
     
     <!-- FlightDataView -->
     <string name="pitch_label">P:</string>

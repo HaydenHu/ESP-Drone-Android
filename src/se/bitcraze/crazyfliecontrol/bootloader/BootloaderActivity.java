@@ -45,7 +45,6 @@ import se.bitcraze.crazyflie.lib.bootloader.Bootloader.BootloaderListener;
 import se.bitcraze.crazyflie.lib.bootloader.FirmwareRelease;
 import se.bitcraze.crazyflie.lib.crazyradio.RadioDriver;
 import se.bitcraze.crazyfliecontrol2.MainActivity;
-import se.bitcraze.crazyfliecontrol2.R;
 import se.bitcraze.crazyfliecontrol2.UsbLinkAndroid;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -73,6 +72,8 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.espressif.espdrone.android.R;
 
 import javax.net.ssl.HttpsURLConnection;
 

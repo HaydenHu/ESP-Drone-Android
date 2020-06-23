@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res/se.bitcraze.crazyfliecontrol2"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:title="@string/preferences_title" >
 
     <!-- Connection settings -->
@@ -91,7 +91,7 @@
             android:title="@string/preferences_pitchtrim" />
 
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="pref_afc_bool"
             android:summaryOff="@string/preferences_afc_bool_summary_off"
             android:summaryOn="@string/preferences_afc_bool_summary_on"
@@ -132,7 +132,7 @@
                 android:title="@string/preferences_minThrust_title" />
 
             <CheckBoxPreference
-                android:defaultValue="false"
+                android:defaultValue="true"
                 android:key="pref_xmode"
                 android:summary="@string/preferences_xmode_summary"
                 android:title="@string/preferences_xmode_title" />
@@ -258,13 +258,14 @@
             android:title="@string/preferences_gyro_amp_title"/>
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="pref_touch_thrust_full_travel"
             android:summaryOff="@string/preferences_touch_thrust_full_travel_summary_off"
             android:summaryOn="@string/preferences_touch_thrust_full_travel_summary_on"
             android:title="@string/preferences_touch_thrust_full_travel" />
 
         <se.bitcraze.crazyfliecontrol.prefs.SliderPreference
+            android:defaultValue="@string/preferences_joystick_size_defaultValue"
             android:key="pref_touch_slider_size"
             android:title="@string/preferences_joystick_size_title"
             custom:lowerLimit="10"
@@ -279,19 +280,19 @@
         android:title="@string/preferences_app_title">
     
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="pref_screen_rotation_lock_bool"
             android:title="@string/preferences_screen_rotation_lock_title"
             android:summary="@string/preferences_screen_rotation_lock_summary" />
 
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="pref_immersive_mode_bool"
             android:title="@string/preferences_immersive_mode_title"
             android:summary="@string/preferences_immersive_mode_summary" />
 
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="pref_show_console_bool"
             android:title="@string/preferences_show_console_title"
             android:summary="@string/preferences_show_console_summary" />
@@ -308,4 +309,7 @@
 
     </Preference>
 
+    <Preference
+        android:key="pref_origin_project"
+        android:title="@string/preferences_origin_project"/>
 </PreferenceScreen>

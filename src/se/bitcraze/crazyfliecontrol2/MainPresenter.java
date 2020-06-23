@@ -71,9 +71,17 @@ public class MainPresenter {
         @Override
         public void connected() {
             mainActivity.showToastie("Connected");
-            if (mCrazyflie != null && mCrazyflie.getDriver() instanceof BleLink) {
-                mainActivity.setConnectionButtonConnectedBle();
+            if (mCrazyflie == null) {
+                mainActivity.setConnectionButtonConnected();
+                return;
+            }
+            CrtpDriver driver = mCrazyflie.getDriver();
+            if (driver instanceof BleLink) {
                 // FIXME: Hack to circumvent BLE reconnect problem
+                mainActivity.setConnectionButtonConnectedBle();
+                mCrazyflie.startConnectionSetup_BLE();
+            } else if (driver instanceof EspUdpDriver) {
+                mainActivity.setConnectionButtonConnected();
                 mCrazyflie.startConnectionSetup_BLE();
             } else {
                 mainActivity.setConnectionButtonConnected();
@@ -242,6 +250,14 @@ public class MainPresenter {
         connect(mCacheDir, new ConnectionData(radioChannel, radioDatarate));
     }
 
+    public void connectUDP(File cacheDir) {
+        Log.d(LOG_TAG, "connectUDP()");
+        disconnect();
+        mDriver = null;
+        mDriver = new EspUdpDriver(mainActivity);
+        connect(cacheDir, null);
+    }
+
     public void connectBle(boolean writeWithResponse, File mCacheDir) {
         Log.d(LOG_TAG, "connectBle()");
         // ensure previous link is disconnected
@@ -339,7 +355,7 @@ public class MainPresenter {
         }
     }
 
-    public Crazyflie getCrazyflie(){
+    public Crazyflie getCrazyflie() {
         return mCrazyflie;
     }
 

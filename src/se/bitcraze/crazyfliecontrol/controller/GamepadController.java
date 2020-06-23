@@ -30,7 +30,6 @@ package se.bitcraze.crazyfliecontrol.controller;
 import se.bitcraze.crazyflie.lib.crazyradio.RadioDriver;
 import se.bitcraze.crazyfliecontrol.prefs.PreferencesActivity;
 import se.bitcraze.crazyfliecontrol2.MainActivity;
-import se.bitcraze.crazyfliecontrol2.R;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.util.Log;
@@ -38,6 +37,8 @@ import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.Toast;
+
+import com.espressif.espdrone.android.R;
 
 /**
  * The GamepadController deals with external controllers (e.g. a PS3 or XBox game pad).

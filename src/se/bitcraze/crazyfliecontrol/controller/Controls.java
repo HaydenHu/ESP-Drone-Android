@@ -28,12 +28,13 @@
 package se.bitcraze.crazyfliecontrol.controller;
 
 import se.bitcraze.crazyfliecontrol.prefs.PreferencesActivity;
-import se.bitcraze.crazyfliecontrol2.R;
 import se.bitcraze.crazyfliecontrol2.FlightDataView;
 import se.bitcraze.crazyfliecontrol2.MainActivity;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.widget.Toast;
+
+import com.espressif.espdrone.android.R;
 
 /**
  * This class encapsulates the common preferences for all types of controllers.

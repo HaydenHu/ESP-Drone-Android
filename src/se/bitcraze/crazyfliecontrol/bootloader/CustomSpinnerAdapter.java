@@ -30,7 +30,6 @@ package se.bitcraze.crazyfliecontrol.bootloader;
 import java.util.List;
 
 import se.bitcraze.crazyflie.lib.bootloader.FirmwareRelease;
-import se.bitcraze.crazyfliecontrol2.R;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -38,6 +37,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.espressif.espdrone.android.R;
 
 public class CustomSpinnerAdapter extends ArrayAdapter<FirmwareRelease> {
 

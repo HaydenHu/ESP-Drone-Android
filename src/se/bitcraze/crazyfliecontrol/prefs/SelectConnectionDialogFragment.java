@@ -27,12 +27,13 @@
 
 package se.bitcraze.crazyfliecontrol.prefs;
 
-import se.bitcraze.crazyfliecontrol2.R;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
+import com.espressif.espdrone.android.R;
 
 public class SelectConnectionDialogFragment extends DialogFragment {
 
